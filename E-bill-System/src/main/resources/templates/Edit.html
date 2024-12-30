@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    <title>Update Customer</title>
+</head>
+<body>
+<h3 class="col-md-4 offset-md-5">Update Customer</h3>
+<div class="container my-5">
+    <!-- Set the action to update the existing customer with th:action -->
+    <form class="col-md-4 offset-md-4" th:action="@{/admin/add-customer}" method="post" th:object="${customer}">
+        <!-- Hidden input to specify the PUT method for updating -->
+        <input type="hidden" name="id" value="${customer.id}"  th:field="*{id}"/>
+        
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <!-- Pre-populate the field with customer data -->
+            <input type="text" class="form-control" id="name" name="name" th:value="${customer.name}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <!-- Pre-populate the field with customer data -->
+            <input type="email" class="form-control" id="email" name="email" th:value="${customer.email}">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <!-- Pre-populate the field with customer data -->
+            <input type="text" class="form-control" id="phone" name="phone" th:value="${customer.phone}">
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <!-- Pre-populate the field with customer data -->
+            <input type="text" class="form-control" id="address" name="address" th:value="${customer.address}">
+        </div>
+        <div class="mb-3">
+            <label for="connectionType" class="form-label">Connection Type</label>
+            <!-- Pre-populate the field with customer data -->
+            <input type="text" class="form-control" id="connectionType" name="connectionType" th:value="${customer.connectionType}">
+        </div>
+        <center>
+            <button type="submit" class="btn btn-primary">Update Customer</button>
+        </center>
+    </form>
+</div>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+</html>

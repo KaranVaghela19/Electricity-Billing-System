@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<title>Customers</title>
+ <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h3 class="col-md-4 offset-md-5">Customer List</h3>
+	<div class="container my-5">
+	<a class ="btn btn-primary mb-3" href="/admin/add-customer">Add Customers</a>
+	<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+    <!--    <th scope="col">Sr No</th>-->
+      <th scope="col">Customer ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">Connection Type</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="customer : ${customers}">
+     <!--- <th scope="row">1</th> __--->
+        <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.email}"></td>
+      <td th:text="${customer.phone}"></td>
+      <td th:text="${customer.address}"></td>
+      <td th:text="${customer.connectionType}"></td>
+      <td><a class=" btn btn-secondary btn-sm" th:href="@{/admin/bill-details}">Generate Bill</a>
+      <a style="color:blue" th:href="@{/admin/editid/{id} (id=${customer.id})}"><i class="fa-solid fa-pen-to-square ms-4" ></i></a>
+      <a style="color:red" th:href="@{/admin/delete-customer/{id}(id=${customer.id})}"><i class="fa-solid fa-trash ms-4"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+	</div>
+</body>
+</html>
